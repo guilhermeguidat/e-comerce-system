@@ -30,7 +30,7 @@ public class Main {
                 try {
                     System.out.println("1-Produtos\n2-Pedidos\n3-Clientes\n9-Sair");
                     opc = sc.nextInt();
-                    sc.nextLine(); // Consome a quebra de linha
+                    sc.nextLine();
                     switch (opc) {
                         case 1 -> menuGerenciamentoProdutos(session, sc, produtos);
                         case 2 -> menuGerenciamentoPedidos(session, sc, produtos, clientes, pedidos);
@@ -40,7 +40,7 @@ public class Main {
                     }
                 } catch (Exception e) {
                     System.out.println("Erro ao processar entrada: " + e.getMessage());
-                    sc.nextLine(); // Consome entrada inválida
+                    sc.nextLine();
                 }
             } while (opc != 9);
 
@@ -57,7 +57,7 @@ public class Main {
         System.out.println("1 - Cadastrar\n2 - Listar\n3 - Remover");
         try {
             int opc = sc.nextInt();
-            sc.nextLine(); // Consome quebra de linha
+            sc.nextLine();
             switch (opc) {
                 case 1 -> {
                     System.out.print("Nome: ");
@@ -104,7 +104,7 @@ public class Main {
         System.out.println("1 - Criar\n2 - Listar\n3 - Remover");
         try {
             int opc = sc.nextInt();
-            sc.nextLine(); // Consome quebra de linha
+            sc.nextLine();
             switch (opc) {
                 case 1 -> {
                     System.out.print("Digite o id do cliente: ");
@@ -175,7 +175,7 @@ public class Main {
         System.out.println("1 - Cadastrar\n2 - Listar\n3 - Remover");
         try {
             int opc = sc.nextInt();
-            sc.nextLine(); // Consome quebra de linha
+            sc.nextLine();
             switch (opc) {
                 case 1 -> {
                     System.out.print("Nome: ");
