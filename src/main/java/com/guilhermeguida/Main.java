@@ -1,5 +1,7 @@
 package com.guilhermeguida;
 
+import com.guilhermeguida.exceptions.EstoqueInsuficienteException;
+import com.guilhermeguida.exceptions.ProdutoNaoEncontradoException;
 import com.guilhermeguida.model.Cliente;
 import com.guilhermeguida.model.Pedido;
 import com.guilhermeguida.model.PedidoEnum;
@@ -126,13 +128,18 @@ public class Main {
                         int idProduto = sc.nextInt();
                         Produto produto = produtos.stream().filter(p -> p.getId() == idProduto).findFirst().orElse(null);
 
-                        if (produto != null) {
-                            auxProdutos.add(produto);
-                        } else {
-                            System.out.println("Produto não encontrado. Ignorando...");
-                            auxProdutos.clear();
-                            i = -1;
+                        if (produto == null) {
+                            throw new ProdutoNaoEncontradoException("Produto com ID " + idProduto + " não encontrado.");
                         }
+
+                        System.out.print("Quantidade do produto: ");
+                        int quantidade = sc.nextInt();
+                        if (produto.getQuantidadeEstoque() < quantidade) {
+                            throw new EstoqueInsuficienteException("Estoque insuficiente para o produto " + produto.getNome() + ". Estoque disponível: " + produto.getQuantidadeEstoque());
+                        }
+
+                        produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() - quantidade);
+                        auxProdutos.add(produto);
                     }
 
                     System.out.print("Status: ");
@@ -165,6 +172,8 @@ public class Main {
                 }
                 default -> System.out.println("Opção inválida.");
             }
+        } catch (ProdutoNaoEncontradoException | EstoqueInsuficienteException e) {
+            System.out.println("Erro: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Erro ao processar gerenciamento de pedidos: " + e.getMessage());
         }
