@@ -100,7 +100,7 @@ public class Pedido implements CarrinhoDeCompras, Serializable {
                 "id=" + id +
                 ", cliente=" + cliente +
                 ", produtos=" + produtos +
-                ", dataPeiddo=" + dataPedido +
+                ", dataPedido=" + dataPedido +
                 ", status=" + status +
                 '}';
     }
