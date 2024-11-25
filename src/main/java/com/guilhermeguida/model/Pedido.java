@@ -65,12 +65,12 @@ public class Pedido implements CarrinhoDeCompras, Serializable {
         this.produtos = produtos;
     }
 
-    public Date getDataPeiddo() {
+    public Date getDataPedido() {
         return dataPedido;
     }
 
-    public void setDataPeiddo(Date dataPeiddo) {
-        this.dataPedido = dataPeiddo;
+    public void setDataPedido(Date dataPedido) {
+        this.dataPedido = dataPedido;
     }
 
     public PedidoEnum getStatus() {
